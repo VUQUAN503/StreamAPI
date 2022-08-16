@@ -71,6 +71,12 @@ EnglishClub club = new EnglishClub() {
 ```
 ### Giải thích: Vì hàm learnEnglish không có tham số => theo cú pháp lambda trên ta dc *()->{}*. Nhìn rất ngắn gọn phải không. Những người mới tiếp cận thì sẽ thấy nó hơi khó hiểu. Mọi người chỉ nhớ cho mình là lambda một functional interface()
 ### *Chú ý: Chỉ Functional Interface ta mới có thể rút gọn nó thành biểu thức lambda.*
+### *Mọi người có thể tham khảo một số Functional Interface Java cung cấp sẵn*
+- Predicate<T>
+- Consumer<T>
+- Supplier<T>
+- Function<T, R>
+- ...
 ## **II. Stream API.**
 >## *Khái niệm:* Là một API cung cấp các hàm giúp mình sử lý và thao tác với tập hợp theo cách viết functional programming(What).
 ## 1. Cách tạo một stream.
@@ -83,13 +89,18 @@ EnglishClub club = new EnglishClub() {
 ## 2. Sử dụng iterate method.
 >### Phương thức này sẽ sinh ra các giá trị đế khi không sinh được nữa và nó nhận 3 tham số:
 > - ### *seed: là giá trị bắt đầu của stream*
-> - ### *Predicate: là điều kiện được sinh ra*
-> - ### *UnaryOperator: là cách thức sinh ra giá trị tiếp theo*
+> - ### *Predicate(Functional Interface): là điều kiện được sinh ra*
+> - ### *UnaryOperator(Functional Interface): là cách thức sinh ra giá trị tiếp theo*
 > ### *Chú ý: Nếu không cần điều kiện sinh thì ta có thể loại bỏ tham số thứ 2.*
-> ### Ví dụ ta cần sinh các giá trị tăng dần 1 đơn vị bắt đầu từ 1.
+> ### Mọi người để ý có thể thấy phương thưc này giống hệt vòng lặp. Ví dụ ta cần vòng lặp 10 làn chả hạn.
 ```
-    Stream.iterate(1, i -> i + 1)
-          .forEach(System.out::println);
+    for(int i = 0; i < 10; ++i){
+        System.out.println(i);
+    }
+```
+```
+    Stream.iterate(0, i -> i < 10, i -> i + 1)
+    .forEach(System.out::println);
 ```
 ### Để giới hạn số lượng giá trị sinh ra tử sử dụng phương thức limit. Phương thức này nhận một tham số là số lượng phần tử giới hạn. Ví dụ ta cần sinh ra tối đa một 100 phần tử:
 ```
