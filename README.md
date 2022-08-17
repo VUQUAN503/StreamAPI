@@ -191,3 +191,24 @@ numbers.stream();// convert list -> stream
 |findFirst | public abstract java.util.Optional<T> findFirst() | Returns an Optional describing the first element of this stream, or an empty Optional if the stream is empty. If the stream has no encounter order, then any element may be returned. |
 |findAny | public abstract java.util.Optional<T> findAny() | Returns an Optional describing some element of the stream, or an empty Optional if the stream is empty. |
 ### 2.1 Filter method
+#### Phương thức này giúp mình Lọc các phần tử với điều kiện được truyền vào.
+#### Ví dụ: Lọc phần tử chẵn trong stream integer
+#### Nếu mọi người chưa quen với biểu thức lambda thì mình new trực tiếp đối tượng Predicate sau khi viết logic trong hàm implement xong mình có thể biến đổi nó thành biểu thức lambda theo [Công thức trên](##3-lambda-expresion)
+```
+    // tạo stream integer gồm 5 phần tử
+    Stream.of(1, 2, 3, 4, 5)
+          .filter(new Predicate(){
+                @Override
+                public void test(Integer i){
+                    return i % 2 == 0;
+                }
+          }) // lọc ra các phần tử chẵn
+          .forEach(System.out::println);
+```
+#### Viết bằng biểu thức lambda.
+```
+    // tạo stream integer gồm 5 phần tử
+    Stream.of(1, 2, 3, 4, 5)
+          .filter(i -> i % 2 == 0) // lọc ra các phần tử chẵn
+          .forEach(System.out::println);
+```
