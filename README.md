@@ -122,17 +122,44 @@ public interface Consumer<T> {
 ```
 - Supplier<T> : Không nhận vào tham số và trả về giá trị kiểu T
 ```
+@FunctionalInterface
+public interface Supplier<T> {
+
+    /**
+     * Gets a result.
+     *
+     * @return a result
+     */
+    T get();
+}
+```
+Ví dụ: nhận về số 1.
+```
     Supplier<Integer> getOddNumber = () -> { 
         return 1;
     };
 ```
 - Function<T, R> : Nhận vào tham số kiểu T và trả về giá trị kiểu R
 ```
+@FunctionalInterface
+public interface Function<T, R> {
+
+    /**
+     * Applies this function to the given argument.
+     *
+     * @param t the function argument
+     * @return the function result
+     */
+    R apply(T t);
+}
+```
+Ví dụ: convert từ số nguyên sang chuỗi dạng String - number.
+```
     // Convert integer to String
     Function<Integer, String> getOddNumber = i -> { 
         return "String - " + i;
     };
-```
+``` 
 - ...
 ## **II. Stream API.**
 ### *Khái niệm:* Là một API cung cấp các hàm giúp mình xử lý và thao tác với tập hợp theo cách viết functional programming(What). Stream thiết kế theo partten builder nên ta có thể nên các phương thức của nó sẽ có kiểu giá trị trả về là chính nó.
@@ -212,3 +239,4 @@ numbers.stream();// convert list -> stream
           .filter(i -> i % 2 == 0) // lọc ra các phần tử chẵn
           .forEach(System.out::println); // 2 4
 ```
+### 2.2. Phương thức map.
