@@ -1,9 +1,9 @@
-<style>
+<!-- <style>
 r { color: Red }
 o { color: Orange }
 g { color: Green }
 y { color: Yellow}
-</style>
+</style> -->
 
 # **Stream API in Java**
 ## **Để học được bài học này các bạn cần có những kiến thức về functional interface, lambda expression and method reference.**
@@ -183,7 +183,11 @@ List<Integer> numbers = List.of(1, 2, 3, 4, 5);
 numbers.stream();// convert list -> stream
 ```
 ### 2. Các phương thức cơ bản
-|Tên |Mô tả |
---- | --- |
-|filter | Truyền vào Predicate<T> |
-|map | Truyền vào một Function<T, R> |
+|Tên | Cú pháp |Mô tả |
+--- | --- | --- |
+|filter | public abstract Stream<T> filter(java.util.function.Predicate<? super T> predicate) | Returns a stream consisting of the elements of this stream that match the given predicate. |
+|map | public abstract <R> Stream<R> map(java.util.function.Function<? super T, ? extends R> mapper) | Returns a stream consisting of the results of applying the given function to the elements of this stream. |
+|flatMap | public abstract <R> Stream<R> flatMap(java.util.function.Function<? super T, ? extends Stream<? extends R>> mapper) | Returns a stream consisting of the results of replacing each element of this stream with the contents of a mapped stream produced by applying the provided mapping function to each element. Each mapped stream is closed after its contents have been placed into this stream. (If a mapped stream is null an empty stream is used, instead.) |
+|findFirst | public abstract java.util.Optional<T> findFirst() | Returns an Optional describing the first element of this stream, or an empty Optional if the stream is empty. If the stream has no encounter order, then any element may be returned. |
+|findAny | public abstract java.util.Optional<T> findAny() | Returns an Optional describing some element of the stream, or an empty Optional if the stream is empty. |
+### 2.1 Filter method
