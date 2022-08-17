@@ -77,7 +77,7 @@ EnglishClub club = new EnglishClub() {
 ```
     EnglishClub club = ()-> {};
 ```
-#### Giải thích: Vì hàm learnEnglish không có tham số => theo cú pháp lambda trên ta dc *()->{}*. Nhìn rất ngắn gọn phải không. Những người mới tiếp cận thì sẽ thấy nó hơi khó hiểu. Mọi người chỉ nhớ cho mình là lambda một functional interface()
+#### Giải thích: Vì hàm learnEnglish không có tham số => theo cú pháp lambda trên ta dc *()->{}*. Nhìn rất ngắn gọn phải không. Những người mới tiếp cận thì sẽ thấy nó hơi khó hiểu. Mọi người chỉ nhớ cho mình là lambda expression là một functional interface()
 #### *Chú ý: Chỉ Functional Interface ta mới có thể rút gọn nó thành biểu thức lambda.*
 #### *Mọi người có thể tham khảo một số Functional Interface Java cung cấp sẵn*
 - Predicate<T> :Nhận vào một tham số và trả về boolean.
@@ -191,9 +191,9 @@ numbers.stream();// convert list -> stream
 |findFirst | public abstract java.util.Optional<T> findFirst() | Returns an Optional describing the first element of this stream, or an empty Optional if the stream is empty. If the stream has no encounter order, then any element may be returned. |
 |findAny | public abstract java.util.Optional<T> findAny() | Returns an Optional describing some element of the stream, or an empty Optional if the stream is empty. |
 ### 2.1 Filter method
-#### Phương thức này giúp mình Lọc các phần tử với điều kiện được truyền vào.
+#### Phương thức này giúp mình Lọc các phần tử theo điều kiện được truyền vào
 #### Ví dụ: Lọc phần tử chẵn trong stream integer
-#### Nếu mọi người chưa quen với biểu thức lambda thì mình new trực tiếp đối tượng Predicate sau khi viết logic trong hàm implement xong mình có thể biến đổi nó thành biểu thức lambda theo [Công thức trên](##3-lambda-expresion)
+#### Nếu mọi người chưa quen với biểu thức lambda thì mình new trực tiếp đối tượng Predicate sau khi viết logic trong hàm implement xong mình có thể biến đổi nó thành biểu thức lambda theo [công thức trên](#3lambda-expresion).
 ```
     // tạo stream integer gồm 5 phần tử
     Stream.of(1, 2, 3, 4, 5)
@@ -203,12 +203,12 @@ numbers.stream();// convert list -> stream
                     return i % 2 == 0;
                 }
           }) // lọc ra các phần tử chẵn
-          .forEach(System.out::println);
+          .forEach(System.out::println); // 2 4
 ```
 #### Viết bằng biểu thức lambda.
 ```
     // tạo stream integer gồm 5 phần tử
     Stream.of(1, 2, 3, 4, 5)
           .filter(i -> i % 2 == 0) // lọc ra các phần tử chẵn
-          .forEach(System.out::println);
+          .forEach(System.out::println); // 2 4
 ```
